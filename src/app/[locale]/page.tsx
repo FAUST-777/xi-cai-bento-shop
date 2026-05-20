@@ -9,11 +9,11 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
   const mainItems = [
     { id: 1, img: '/images/chicken.png', price: 120, hasImg: true },
-    { id: 2, img: '/images/beef.png', price: 110, hasImg: true },
-    { id: 3, img: '/images/braised_pork.png', price: 90, hasImg: true },
-    { id: 4, img: '/images/shrimp_roll.png', price: 90, hasImg: true },
-    { id: 5, img: '/images/fish.png', price: 90, hasImg: true },
-    { id: 6, img: '/images/chicken.png', price: 105, hasImg: true },
+    { id: 2, img: '/images/牛肉便當.jpg', price: 110, hasImg: true },
+    { id: 3, img: '/images/控肉便當.jpg', price: 90, hasImg: true },
+    { id: 4, img: '/images/蝦捲便當.jpg', price: 90, hasImg: true },
+    { id: 5, img: '/images/鮮魚便當.jpg', price: 90, hasImg: true },
+    { id: 6, img: '/images/雞腿便當.jpg', price: 105, hasImg: true },
     { id: 7, img: '/images/minced_pork_bento.png', price: 70, hasImg: true },
     { id: 8, img: '/images/veg.png', price: 60, hasImg: true },
     { id: 9, img: '/images/fried_noodles.png', price: '35 / 50', hasImg: true },
