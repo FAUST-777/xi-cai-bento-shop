@@ -101,6 +101,15 @@
   text-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
 
+.heroInfo {
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.85;
+  margin-top: 0.4rem;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+  letter-spacing: 0.5px;
+}
+
 .menuSection {
   max-width: 1200px;
   margin: 0 auto;

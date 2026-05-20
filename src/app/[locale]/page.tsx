@@ -66,6 +66,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         <div className={styles.heroContent}>
           <h2 className={styles.heroTitle}>{tShop('name')}</h2>
           <p className={styles.heroSubtitle}>{tShop('delivery')}</p>
+          <p className={styles.heroInfo}>📍 {tShop('address')}</p>
+          <p className={styles.heroInfo}>📞 {tShop('phone')}</p>
         </div>
       </section>
 
