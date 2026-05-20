@@ -56,8 +56,35 @@
     *   **字型相容性**：在 CSS font-family 中加入多個備用字型，如 `Segoe UI Historic`, `Tahoma`, `Noto Sans Myanmar`, `Noto Sans Khmer` 等，確保在各種系統上的基本渲染。
     *   **防跑版排版**：傳單與網頁卡片全面採用 `flex-direction: column` 或 `grid` 彈性伸縮排版，並配合 `overflow: hidden` 與精確的 `height` 控制（例如主食卡片高度限制），避免因個別語言字數過多而破壞整體 A4 紙張的黃金比例。
 
+### 階段三：GitHub 建倉、Vercel 部署、真實圖片整合（2026-05-20）
+
+*   **GitHub 倉庫建立**：
+    *   於 `FAUST-777/xi-cai-bento-shop` 建立公開 repo，完整上傳所有原始碼。
+    *   設定 GitHub 首頁預覽網址為 `https://bento-shop.vercel.app/zh`。
+
+*   **真實便當照片整合**：
+    *   對照 git 歷史還原原始 AI 圖片對應關係（beef.png → 牛肉便當、braised_pork.png → 控肉便當 等）。
+    *   以中文命名的實拍照片優先覆蓋，舊 AI 圖片保留備用：
+        | id | 菜單 | 已更新為實拍 |
+        |----|------|------------|
+        | 2 | 牛肉便當 | `牛肉便當.jpg` ✓ |
+        | 3 | 控肉便當 | `控肉便當.jpg` ✓ |
+        | 4 | 蝦捲便當 | `蝦捲便當.jpg` ✓ |
+        | 5 | 鮮魚便當 | `鮮魚便當.jpg` ✓ |
+        | 6 | 雞腿便當 | `雞腿便當.jpg` ✓ |
+    *   id 1、7、8、9、10 暫用舊 AI 圖，待後續實拍補充。
+
+*   **Vercel 正式部署**：
+    *   Vercel CLI 因 Node.js 18 引擎不相容（CLI v47+ 需要 Node 20+），改用 **Vercel REST API** (`v13/deployments`) 直接觸發部署。
+    *   傳入 `gitSource`（GitHub repoId + sha）成功建立 Production deployment。
+    *   正式網址：`https://bento-shop.vercel.app`
+
+*   **Claude Code 自動同步 Hook**：
+    *   於 `.claude/settings.json` 加入 **Stop hook**，Claude 每次結束對話後自動執行 `git add -A → commit → push`，確保進度即時備份至 GitHub。
+
 ---
 
 ## 🔄 未來進度更新與維護機制
-1.  **里程碑自動同步**：每當完成一個階段的修改（如：本次替換廚師照片與功能升級），會同步更新此 `DEVELOPMENT_LOG.md`。
-2.  **GitHub 實時推送**：專案程式碼與本開發日誌將在每次段落結束後，一併 push 至使用者的 GitHub 遠端倉庫保存。
+1.  **里程碑自動同步**：每當完成一個階段的修改，會同步更新此 `DEVELOPMENT_LOG.md`。
+2.  **GitHub 實時推送**：專案程式碼與本開發日誌將在每次段落結束後，一併 push 至 GitHub 遠端倉庫保存。
+3.  **圖片待補清單**：id 1（雙主菜）、id 7（滷肉便當）、id 8（菜飯便當）、id 9（炒麵）、id 10（滷肉飯）尚待實拍照片，建議用 ChatGPT/Midjourney 依現有照片風格生成或另行拍攝。
