@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "powershell",
+            "command": "$p='C:\\Users\\USER\\.gemini\\antigravity\\scratch\\bento_shop'; Push-Location $p; if (git status --porcelain) { git add -A; git commit -m \"chore: auto-sync $(Get-Date -Format 'yyyy-MM-dd HH:mm')\"; git push }; Pop-Location",
+            "timeout": 30,
+            "statusMessage": "Syncing to GitHub..."
+          }
+        ]
+      }
+    ]
+  }
+}
