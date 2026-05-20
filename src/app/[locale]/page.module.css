@@ -1,0 +1,263 @@
+.container {
+  min-height: 100vh;
+  background-color: #fcfaf8;
+  font-family: var(--font-geist-sans), sans-serif;
+  color: #333;
+}
+
+.header {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.shopName {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #e65100;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.langSwitcher {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.langLink {
+  text-decoration: none;
+  color: #666;
+  font-weight: 600;
+  transition: all 0.2s;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.langLink:hover, .langLinkActive {
+  color: #e65100;
+  background-color: #fff3e0;
+}
+
+.hero {
+  position: relative;
+  height: 60vh;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+.heroImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+}
+
+.heroTitle {
+  font-size: 4rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  text-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  letter-spacing: 2px;
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  opacity: 0.95;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.menuSection {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  text-align: center;
+  color: #333;
+  margin-bottom: 4rem;
+  position: relative;
+  font-weight: 800;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: #e65100;
+  border-radius: 2px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 5rem;
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(230, 81, 0, 0.12);
+}
+
+.cardImage {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  background-color: #f8f8f8;
+}
+
+.cardContent {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.8rem;
+}
+
+.cardTitle {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #222;
+  margin: 0;
+  flex: 1;
+  padding-right: 1rem;
+  line-height: 1.4;
+}
+
+.cardPrice {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #e65100;
+  margin: 0;
+  background: #fff3e0;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+}
+
+.cardDesc {
+  color: #777;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.listSection {
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+  margin-bottom: 2rem;
+}
+
+.listItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  transition: padding-left 0.2s;
+}
+
+.listItem:hover {
+  padding-left: 0.5rem;
+}
+
+.listItem:last-child {
+  border-bottom: none;
+}
+
+.listItemName {
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: #333;
+}
+
+.listItemPrice {
+  font-weight: 800;
+  color: #e65100;
+  font-size: 1.15rem;
+}
+
+.footer {
+  background-color: #222;
+  color: white;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.footerInfo {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.footerInfo h2 {
+  font-size: 2rem;
+  color: #ff9800;
+  margin-bottom: 1rem;
+}
+
+.footerInfo p {
+  margin: 0;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}

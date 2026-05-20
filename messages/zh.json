@@ -1,0 +1,42 @@
+{
+  "Shop": {
+    "name": "喜財快餐",
+    "address": "樹林柑園街1段60號-1",
+    "phone": "35018669",
+    "delivery": "歡迎外帶或來電預訂",
+    "mains": "主食類",
+    "soups": "湯品類",
+    "sides": "小菜類",
+    "currency": "NT$"
+  },
+  "Menu": {
+    "mains_1_name": "雙主菜(蝦/魚/控肉)選二",
+    "mains_1_desc": "份量滿點的雙主餐選擇",
+    "mains_2_name": "牛肉便當",
+    "mains_2_desc": "軟嫩入味的滷牛肉",
+    "mains_3_name": "控肉便當",
+    "mains_3_desc": "肥瘦相間的經典控肉",
+    "mains_4_name": "蝦捲便當",
+    "mains_4_desc": "金黃酥脆的手工蝦捲",
+    "mains_5_name": "鮮魚便當",
+    "mains_5_desc": "每日新鮮海鮮",
+    "mains_6_name": "雞腿便當",
+    "mains_6_desc": "外酥內嫩的大雞腿",
+    "mains_7_name": "滷肉便當",
+    "mains_7_desc": "香氣四溢的古早味",
+    "mains_8_name": "菜飯便當",
+    "mains_8_desc": "清爽健康的多樣配菜",
+    "mains_9_name": "炒麵",
+    "mains_9_desc": "大份 $50 / 小份 $35",
+    "mains_10_name": "滷肉飯",
+    "mains_10_desc": "大份 $50 / 小份 $35",
+    "soups_1_name": "貢丸湯",
+    "soups_2_name": "魚丸湯",
+    "soups_3_name": "豬血湯",
+    "soups_4_name": "味增湯",
+    "sides_1_name": "荷包蛋",
+    "sides_2_name": "滷蛋",
+    "sides_3_name": "油豆腐",
+    "sides_4_name": "雞腿單支"
+  }
+}

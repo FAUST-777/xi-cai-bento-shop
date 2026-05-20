@@ -1,0 +1,42 @@
+{
+  "Shop": {
+    "name": "Quán cơm Hỷ Tài (喜財快餐)",
+    "address": "60-1, Đoạn 1, Phố Cám Viên, Thụ Lâm",
+    "phone": "35018669",
+    "delivery": "Mang về hoặc gọi đặt trước",
+    "mains": "Món Chính",
+    "soups": "Món Canh",
+    "sides": "Món Phụ",
+    "currency": "NT$"
+  },
+  "Menu": {
+    "mains_1_name": "Cơm hộp 2 món (Tôm/Cá/Thịt kho)",
+    "mains_1_desc": "Lựa chọn 2 món ăn kèm",
+    "mains_2_name": "Cơm hộp thịt bò",
+    "mains_2_desc": "Thịt bò hầm mềm rục",
+    "mains_3_name": "Cơm hộp thịt heo kho",
+    "mains_3_desc": "Thịt ba chỉ kho truyền thống",
+    "mains_4_name": "Cơm hộp chả tôm",
+    "mains_4_desc": "Chả tôm chiên giòn",
+    "mains_5_name": "Cơm hộp cá tươi",
+    "mains_5_desc": "Hải sản tươi mỗi ngày",
+    "mains_6_name": "Cơm hộp đùi gà",
+    "mains_6_desc": "Đùi gà chiên giòn rụm",
+    "mains_7_name": "Cơm hộp thịt băm",
+    "mains_7_desc": "Thịt băm xào mặn ngọt",
+    "mains_8_name": "Cơm hộp rau củ",
+    "mains_8_desc": "Nhiều loại rau củ thanh đạm",
+    "mains_9_name": "Mì xào",
+    "mains_9_desc": "Lớn $50 / Nhỏ $35",
+    "mains_10_name": "Cơm thịt băm",
+    "mains_10_desc": "Lớn $50 / Nhỏ $35",
+    "soups_1_name": "Canh mọc heo",
+    "soups_2_name": "Canh cá viên",
+    "soups_3_name": "Canh huyết heo",
+    "soups_4_name": "Canh Miso",
+    "sides_1_name": "Trứng ốp la",
+    "sides_2_name": "Trứng kho",
+    "sides_3_name": "Đậu hũ chiên",
+    "sides_4_name": "Đùi gà rời"
+  }
+}
