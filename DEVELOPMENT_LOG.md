@@ -131,3 +131,58 @@
 1.  **里程碑自動同步**：每當完成一個階段的修改，會同步更新此 `DEVELOPMENT_LOG.md`。
 2.  **GitHub 實時推送**：專案程式碼與本開發日誌將在每次段落結束後，一併 push 至 GitHub 遠端倉庫保存。
 3.  **圖片待補清單**：id 1（雙主菜）、id 7（滷肉便當）、id 8（菜飯便當）、id 9（炒麵）、id 10（滷肉飯）尚待實拍照片，建議用 ChatGPT/Midjourney 依現有照片風格生成或另行拍攝。
+
+---
+
+### 階段五：Google Tag Manager (GTM) 整合（2026-05-26）
+
+#### 🎯 目標
+為網站加入 Google Tag Manager（Container ID：`GTM-PF2PCDCT`），以便後續追蹤訪客行為、按鈕點擊、頁面瀏覽等數據。
+
+#### 📝 修改內容
+
+**修改檔案：`src/app/[locale]/layout.tsx`**
+
+Next.js App Router 不能直接使用原始 HTML `<script>` 標籤，必須透過 `next/script` 元件管理載入行為：
+
+| GTM 官方指引 | Next.js 做法 | 原因 |
+|---|---|---|
+| `<script>` 放 `<head>` | `<Script strategy="afterInteractive">` 放 `<body>` 底部 | 頁面 hydrate 後才執行，效能最佳 |
+| `<noscript>` 緊靠 `<body>` 開頭 | 原生 `<noscript>` 放 `<body>` 最頂 | 直接 JSX 渲染，無需改動 |
+| 直接寫 inline `<script>` | `dangerouslySetInnerHTML` | App Router 限制，必須走此 API |
+
+新增的兩段代碼：
+1. `<noscript>` iframe — 緊靠 `<body>` 開頭，供關閉 JS 的瀏覽器使用
+2. `<Script id="gtm-script" strategy="afterInteractive">` — GTM 主腳本，頁面互動後載入
+
+---
+
+#### ⚠️ 遇到的困難與解決方案
+
+**問題 1：Vercel 未自動部署新 commit**
+- **現象**：將 GTM commit（`3e116e5`）push 至 GitHub main branch 後，Vercel 沒有自動觸發新部署，Production 仍停留在 5/20 的舊版本（`a784949`）。
+- **錯誤嘗試**：在 Vercel Dashboard 點擊「Redeploy」，但此操作是重新執行**舊 commit 的部署**，不會拉取最新 commit，GTM 依然未出現。
+- **解決方案**：改用 Vercel CLI 強制部署最新代碼：
+  ```bash
+  npx vercel --prod
+  ```
+
+**問題 2：CLI 部署到錯誤的 Vercel 專案**
+- **現象**：`npx vercel --prod` 成功執行，但 alias 到的是 `xi-cai-bento-shop.vercel.app`，而非使用者實際使用的 `bento-shop.vercel.app`。原因是 CLI 依據本地 repo 名稱自動 link 到了同名的 Vercel 專案（`xi-cai-bento-shop`），而非目標專案（`bento-shop`）。
+- **解決方案**：明確指定 scope 與 project name：
+  ```bash
+  npx vercel --prod --scope faust777s-projects --project bento-shop
+  ```
+
+#### ✅ 最終驗證
+
+部署完成後，透過 `curl` 抓取頁面原始碼確認 GTM 成功埋入：
+
+```
+GTM-PF2PCDCT    ✅ 出現（noscript iframe + script 兩處）
+googletagmanager.com  ✅ 正確引用
+dataLayer       ✅ 初始化完成
+```
+
+正式網址：`https://bento-shop.vercel.app/zh`
+
