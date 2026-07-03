@@ -9,7 +9,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
   const mainItems = [
     { id: 1, img: '/images/雙主菜便當_.png', price: 120, hasImg: true },
-    { id: 2, img: '/images/牛肉便當.jpg', price: 110, hasImg: true },
+    { id: 2, img: '/images/排骨便當.jpg', price: 95, hasImg: true },
     { id: 3, img: '/images/控肉便當.jpg', price: 90, hasImg: true },
     { id: 4, img: '/images/蝦捲便當.jpg', price: 90, hasImg: true },
     { id: 5, img: '/images/鮮魚便當.jpg', price: 90, hasImg: true },
