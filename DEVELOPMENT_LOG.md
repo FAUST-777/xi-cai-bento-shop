@@ -188,6 +188,7 @@ dataLayer       ✅ 初始化完成
 
 ---
 
+<<<<<<< HEAD
 ### 階段六：菜單更新 — 牛肉便當更換為排骨便當（2026-07-03）
 
 #### 🎯 需求起因
@@ -208,4 +209,41 @@ dataLayer       ✅ 初始化完成
 5. 舊檔 `牛肉便當.jpg` 保留於 repo 備查，未刪除。
 
 > ⚠️ 部署提醒：依階段五經驗，push 至 GitHub 後 Vercel 不一定自動部署，若正式站未更新需手動執行 `npx vercel --prod --scope faust777s-projects --project bento-shop`。
+
+---
+
+### 階段七：A4 宣傳單雙版本改版（東南亞多語版＋純中文版）（2026-07-16）
+
+#### 🎯 目標
+使用者需求：DM 要做兩個版本各印一批——**東南亞外語版**（給外籍員工）與**純中文版**（給本地客人），兩版都必須單面 A4 印完，成品存 GitHub 並提供可下載的網址。
+
+#### 📝 修改內容
+
+| 檔案 | 說明 |
+|---|---|
+| `public/flyer-sea.html` | 東南亞多語版：中文菜名為錨點（店員看中文、客人指單點餐）＋泰／越／緬／柬四語對照，6 款照片主打＋完整品項清單 |
+| `public/flyer-zh.html` | 純中文版：8 款照片主打（含滷肉、菜飯）＋菜色描述，字級放大 |
+| `public/flyer-sea.pdf`、`public/flyer-zh.pdf` | headless Edge 直接輸出的 A4 PDF 成品，可直接下載送印 |
+| `public/flyer.html` | 原檔中段已損毀（亂碼＋重複區塊），改為導向頁指向兩個新版本 |
+
+菜名翻譯取自 `/messages/*.json`（網站權威翻譯），價格以 `src/app/[locale]/page.tsx` 為準；已同步階段六的菜單變更（牛肉便當 → 排骨便當 $95）。
+
+#### ⚠️ 遇到的困難與解決方案
+
+**問題 1：舊 `flyer.html` 檔案損毀**
+- **現象**：檔案中段出現 UTF-8 亂碼（`�าว...`）與重複的菜色區塊、多餘的 `</div>`，研判是先前用會破壞編碼的工具（如 PowerShell 5.1）編輯所致。
+- **解決方案**：不修補舊檔，直接以網站翻譯檔與價格資料重建兩個乾淨版本。
+
+**問題 2：國旗 emoji 在 Windows 列印會變成字母代碼**
+- **現象**：舊版用 🇹🇭🇻🇳 等國旗 emoji 標示語言，但 Windows 的瀏覽器／列印不支援國旗 emoji，印出來會變成「TH」「VN」裸字母。
+- **解決方案**：改用 CSS 樣式化的語言標籤徽章（橘底 TH/VN/MM/KH 小方塊），跨平台列印穩定。
+
+**問題 3：確保單面 A4 不溢出第二頁**
+- **解決方案**：容器固定 `210mm × 296mm`（留 1mm 防溢出）＋ `overflow: hidden`；用 headless Edge `--print-to-pdf` 實際輸出 PDF 驗證兩版都是恰好 1 頁。
+
+#### ✅ 最終驗證
+兩版 PDF 均為單頁 A4，泰／越／緬／柬四種文字、菜色照片、QR Code 均正常渲染。
+
+- 線上列印：`https://bento-shop.vercel.app/flyer-sea.html`、`https://bento-shop.vercel.app/flyer-zh.html`（開頁後按「列印此傳單」）
+- PDF 下載：`https://bento-shop.vercel.app/flyer-sea.pdf`、`https://bento-shop.vercel.app/flyer-zh.pdf`
 

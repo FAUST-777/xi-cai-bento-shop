@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>喜財快餐 - 東南亞多語宣傳單 (A4列印專用)</title>
+    <style>
+        * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', 'Leelawadee UI', 'Myanmar Text', 'Khmer UI', 'Noto Sans', sans-serif;
+            background: #e0e0e0;
+            color: #333;
+        }
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+        @media print {
+            body { background: #fff; }
+            .a4-container { box-shadow: none !important; margin: 0 !important; }
+            .print-hint { display: none !important; }
+        }
+        .print-hint {
+            text-align: center;
+            padding: 10px;
+            background: #333;
+            color: #fff;
+            font-size: 16px;
+        }
+        .print-btn {
+            background: #e65100;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+        .print-btn:hover { background: #c54200; }
+        .a4-container {
+            width: 210mm;
+            height: 296mm;
+            margin: 20px auto;
+            position: relative;
+            background: #fffaf5;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            box-sizing: border-box;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            position: relative;
+            height: 36mm;
+            background: #e65100;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.45;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .header-content {
+            position: relative;
+            z-index: 1;
+            padding-top: 7mm;
+        }
+        .header h1 {
+            font-size: 30pt;
+            margin: 0;
+            text-shadow: 2px 3px 10px rgba(0,0,0,0.9);
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+        .header p {
+            font-size: 13pt;
+            margin: 2px 0 0 0;
+            text-shadow: 1px 2px 5px rgba(0,0,0,0.9);
+            font-weight: bold;
+        }
+        .languages {
+            background: #c54200;
+            color: white;
+            padding: 2mm;
+            text-align: center;
+            font-size: 11pt;
+            letter-spacing: 1px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 3.5mm 9mm;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5mm;
+        }
+        .menu-item {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 2mm;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+            border: 2px solid #ffe0b2;
+        }
+        .menu-item img {
+            width: 22mm;
+            height: 22mm;
+            border-radius: 6px;
+            object-fit: cover;
+            margin-right: 2.5mm;
+            flex-shrink: 0;
+        }
+        .menu-info { flex-grow: 1; min-width: 0; }
+        .menu-info h3 {
+            margin: 0 0 1mm 0;
+            font-size: 13pt;
+            color: #222;
+            font-weight: 900;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .menu-name { white-space: nowrap; }
+        .menu-price {
+            font-size: 15pt;
+            font-weight: 900;
+            color: #e65100;
+            margin-left: 2mm;
+        }
+        .multi-lang {
+            font-size: 7.5pt;
+            color: #555;
+            line-height: 1.45;
+        }
+        .lang-tag {
+            display: inline-block;
+            background: #ffe0b2;
+            color: #a34000;
+            font-size: 6pt;
+            font-weight: 900;
+            border-radius: 3px;
+            padding: 0 3px;
+            margin-right: 2px;
+            vertical-align: middle;
+        }
+        .other-items {
+            margin-top: 3.5mm;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3mm;
+        }
+        .other-list {
+            background: white;
+            padding: 2.5mm 3.5mm;
+            border-radius: 8px;
+            border: 2px solid #eee;
+        }
+        .other-list h4 {
+            color: #e65100;
+            margin: 0 0 1.5mm 0;
+            font-size: 12pt;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 1mm;
+        }
+        .other-list p {
+            margin: 1.2mm 0;
+            font-size: 10pt;
+            display: flex;
+            flex-direction: column;
+            font-weight: bold;
+            border-bottom: 1px dashed #f0f0f0;
+            padding-bottom: 1.2mm;
+        }
+        .other-list p:last-child { border-bottom: none; padding-bottom: 0; }
+        .other-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .other-price { color: #e65100; font-size: 11pt; font-weight: 900; }
+        .other-lang {
+            font-size: 7pt;
+            color: #777;
+            font-weight: normal;
+            margin-top: 0.5mm;
+            line-height: 1.4;
+        }
+        .footer {
+            background: #222;
+            color: white;
+            padding: 3.5mm 10mm;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 4px solid #e65100;
+            flex-shrink: 0;
+        }
+        .footer-info h2 {
+            margin: 0 0 1mm 0;
+            font-size: 16pt;
+            color: #ff9800;
+        }
+        .footer-info p { margin: 1mm 0; font-size: 10.5pt; }
+        .footer-lang { font-size: 8pt; color: #bbb; }
+        .qr-section {
+            text-align: center;
+            background: white;
+            padding: 2mm;
+            border-radius: 8px;
+            color: #222;
+            border: 2px solid #ff9800;
+        }
+        .qr-section img { width: 22mm; height: 22mm; display: block; }
+        .qr-section p {
+            margin: 1mm 0 0 0;
+            font-size: 8pt;
+            font-weight: 900;
+            color: #e65100;
+        }
+    </style>
+</head>
+<body>
+    <div class="print-hint">
+        💡 提示：點擊右方按鈕即可列印出完美比例的 A4 傳單 👉
+        <button class="print-btn" onclick="window.print()">🖨️ 列印此傳單</button>
+    </div>
+
+    <div class="a4-container">
+        <!-- Header -->
+        <div class="header">
+            <img src="./images/hero.png" alt="Hero Background">
+            <div class="header-content">
+                <h1>喜財快餐 Bento Shop</h1>
+                <p>美味平價 ‧ 廠區熱賣中</p>
+            </div>
+        </div>
+        <div class="languages">
+            中文 ｜ ไทย ｜ Tiếng Việt ｜ မြန်မာ ｜ ខ្មែរ
+        </div>
+
+        <div class="content">
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="./images/雞腿便當.jpg" alt="雞腿便當">
+                    <div class="menu-info">
+                        <h3><span class="menu-name">雞腿便當</span> <span class="menu-price">$105</span></h3>
+                        <div class="multi-lang">
+                            <span class="lang-tag">TH</span>ข้าวกล่องน่องไก่ทอด <span class="lang-tag">VN</span>Cơm hộp đùi gà<br>
+                            <span class="lang-tag">MM</span>ကြက်ပေါင် ထမင်းဘူး <span class="lang-tag">KH</span>បាយប្រអប់ភ្លៅមាន់
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="./images/排骨便當.jpg" alt="排骨便當">
+                    <div class="menu-info">
+                        <h3><span class="menu-name">排骨便當</span> <span class="menu-price">$95</span></h3>
+                        <div class="multi-lang">
+                            <span class="lang-tag">TH</span>ข้าวกล่องหมูทอด <span class="lang-tag">VN</span>Cơm hộp sườn chiên<br>
+                            <span class="lang-tag">MM</span>ဝက်နံရိုးကြော် ထမင်းဘူး <span class="lang-tag">KH</span>បាយប្រអប់សាច់ជ្រូកបំពង
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="./images/雙主菜便當_.png" alt="雙主菜便當">
+                    <div class="menu-info">
+                        <h3><span class="menu-name">雙主菜 選二</span> <span class="menu-price">$120</span></h3>
+                        <div class="multi-lang">
+                            <span class="lang-tag">TH</span>ข้าวกล่อง 2 อย่าง <span class="lang-tag">VN</span>Cơm hộp 2 món<br>
+                            <span class="lang-tag">MM</span>ဟင်း ၂ မျိုး <span class="lang-tag">KH</span>បាយប្រអប់សាច់២មុខ
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="./images/控肉便當.jpg" alt="控肉便當">
+                    <div class="menu-info">
+                        <h3><span class="menu-name">控肉便當</span> <span class="menu-price">$90</span></h3>
+                        <div class="multi-lang">
+                            <span class="lang-tag">TH</span>ข้าวกล่องหมูสามชั้นตุ๋น <span class="lang-tag">VN</span>Cơm hộp thịt heo kho<br>
+                            <span class="lang-tag">MM</span>ဝက်သားနီချက် ထမင်းဘူး <span class="lang-tag">KH</span>បាយប្រអប់សាច់ជ្រូកខ
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="./images/蝦捲便當.jpg" alt="蝦捲便當">
+                    <div class="menu-info">
+                        <h3><span class="menu-name">蝦捲便當</span> <span class="menu-price">$90</span></h3>
+                        <div class="multi-lang">
+                            <span class="lang-tag">TH</span>ข้าวกล่องกุ้งม้วน <span class="lang-tag">VN</span>Cơm hộp chả tôm<br>
+                            <span class="lang-tag">MM</span>ပုစွန်လိပ် ထမင်းဘူး <span class="lang-tag">KH</span>បាយប្រអប់បង្គាបំពង
+                        </div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="./images/鮮魚便當.jpg" alt="鮮魚便當">
+                    <div class="menu-info">
+                        <h3><span class="menu-name">鮮魚便當</span> <span class="menu-price">$90</span></h3>
+                        <div class="multi-lang">
+                            <span class="lang-tag">TH</span>ข้าวกล่องปลาสด <span class="lang-tag">VN</span>Cơm hộp cá tươi<br>
+                            <span class="lang-tag">MM</span>ငါး ထမင်းဘူး <span class="lang-tag">KH</span>បាយប្រអប់ត្រី
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="other-items">
+                <div class="other-list">
+                    <h4>平價熱銷 Popular</h4>
+                    <p>
+                        <span class="other-row">滷肉便當 <span class="other-price">$70</span></span>
+                        <span class="other-lang"><span class="lang-tag">TH</span>ข้าวกล่องหมูสับพะโล้ <span class="lang-tag">VN</span>Cơm hộp thịt băm <span class="lang-tag">MM</span>ဝက်သားစဉ်းကော ထမင်းဘူး <span class="lang-tag">KH</span>បាយប្រអប់សាច់ជ្រូកចិញ្ច្រាំ</span>
+                    </p>
+                    <p>
+                        <span class="other-row">菜飯便當 <span class="other-price">$60</span></span>
+                        <span class="other-lang"><span class="lang-tag">TH</span>ข้าวกล่องผักรวม <span class="lang-tag">VN</span>Cơm hộp rau củ <span class="lang-tag">MM</span>ဟင်းသီးဟင်းရွက် ထမင်းဘူး <span class="lang-tag">KH</span>បាយប្រអប់បន្លែ</span>
+                    </p>
+                    <p>
+                        <span class="other-row">炒麵 (大/小) <span class="other-price">$50 / $35</span></span>
+                        <span class="other-lang"><span class="lang-tag">TH</span>บะหมี่ผัด <span class="lang-tag">VN</span>Mì xào <span class="lang-tag">MM</span>ခေါက်ဆွဲကြော် <span class="lang-tag">KH</span>មីឆា</span>
+                    </p>
+                    <p>
+                        <span class="other-row">滷肉飯 (大/小) <span class="other-price">$50 / $35</span></span>
+                        <span class="other-lang"><span class="lang-tag">TH</span>ข้าวราดหมูสับพะโล้ <span class="lang-tag">VN</span>Cơm thịt băm <span class="lang-tag">MM</span>ဝက်သားစဉ်းကော ထမင်း <span class="lang-tag">KH</span>បាយសាច់ជ្រូកចិញ្ច្រាំ</span>
+                    </p>
+                </div>
+                <div class="other-list">
+                    <h4>熱湯 & 小菜 Soups & Sides</h4>
+                    <p>
+                        <span class="other-row">貢丸湯 / 魚丸湯 / 豬血湯 <span class="other-price">$35</span></span>
+                        <span class="other-lang"><span class="lang-tag">TH</span>ซุปลูกชิ้นหมู/ปลา/เลือดหมู <span class="lang-tag">VN</span>Canh mọc heo/cá viên/huyết heo <span class="lang-tag">MM</span>ဟင်းရည် (ဝက်လုံး/ငါးလုံး/ဝက်သွေး) <span class="lang-tag">KH</span>ស៊ុបប្រហិតជ្រូក/ត្រី/ឈាមជ្រូក</span>
+                    </p>
+                    <p>
+                        <span class="other-row">味增湯 <span class="other-price">$25</span></span>
+                        <span class="other-lang"><span class="lang-tag">TH</span>ซุปมิโซะ <span class="lang-tag">VN</span>Canh Miso <span class="lang-tag">MM</span>မီဆို ဟင်းရည် <span class="lang-tag">KH</span>ស៊ុប Miso</span>
+                    </p>
+                    <p>
+                        <span class="other-row">荷包蛋 / 滷蛋 <span class="other-price">$15</span></span>
+                        <span class="other-lang"><span class="lang-tag">TH</span>ไข่ดาว/ไข่พะโล้ <span class="lang-tag">VN</span>Trứng ốp la/kho <span class="lang-tag">MM</span>ကြက်ဥကြော်/နှပ် <span class="lang-tag">KH</span>ពងទាចៀន/ខ</span>
+                    </p>
+                    <p>
+                        <span class="other-row">油豆腐 <span class="other-price">$5</span></span>
+                        <span class="other-lang"><span class="lang-tag">TH</span>เต้าหู้ทอด <span class="lang-tag">VN</span>Đậu hũ chiên <span class="lang-tag">MM</span>တို့ဖူးကြော် <span class="lang-tag">KH</span>តៅហ៊ូបំពង</span>
+                    </p>
+                    <p>
+                        <span class="other-row">單點大雞腿 <span class="other-price">$65</span></span>
+                        <span class="other-lang"><span class="lang-tag">TH</span>น่องไก่ทอด (ชิ้น) <span class="lang-tag">VN</span>Đùi gà rời <span class="lang-tag">MM</span>ကြက်ပေါင် သီးသန့် <span class="lang-tag">KH</span>ភ្លៅមាន់ (មួយ)</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-info">
+                <h2>喜財快餐 Bento Shop</h2>
+                <p>📍 樹林柑園街1段60號-1　📞 訂購專線: 35018669</p>
+                <p class="footer-lang">歡迎外帶或來電預訂 ｜ สั่งกลับบ้านหรือโทรสั่งล่วงหน้า ｜ Mang về hoặc gọi đặt trước<br>ပါဆယ်ယူပါ သို့မဟုတ် ကြိုတင်မှာယူပါ ｜ ខ្ចប់ ឬ កុម្ម៉ង់ទុកជាមុន</p>
+            </div>
+            <div class="qr-section">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://bento-shop.vercel.app" alt="QR Code">
+                <p>網路版 Online</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

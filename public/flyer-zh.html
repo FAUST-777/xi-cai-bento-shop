@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>喜財快餐 - 中文宣傳單 (A4列印專用)</title>
+    <style>
+        * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Microsoft JhengHei', 'Segoe UI', sans-serif;
+            background: #e0e0e0;
+            color: #333;
+        }
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+        @media print {
+            body { background: #fff; }
+            .a4-container { box-shadow: none !important; margin: 0 !important; }
+            .print-hint { display: none !important; }
+        }
+        .print-hint {
+            text-align: center;
+            padding: 10px;
+            background: #333;
+            color: #fff;
+            font-size: 16px;
+        }
+        .print-btn {
+            background: #e65100;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+        .print-btn:hover { background: #c54200; }
+        .a4-container {
+            width: 210mm;
+            height: 296mm;
+            margin: 20px auto;
+            position: relative;
+            background: #fffaf5;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            box-sizing: border-box;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            position: relative;
+            height: 42mm;
+            background: #e65100;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.45;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .header-content {
+            position: relative;
+            z-index: 1;
+            padding-top: 9mm;
+        }
+        .header h1 {
+            font-size: 36pt;
+            margin: 0;
+            text-shadow: 2px 3px 10px rgba(0,0,0,0.9);
+            font-weight: 900;
+            letter-spacing: 4px;
+        }
+        .header p {
+            font-size: 15pt;
+            margin: 3px 0 0 0;
+            text-shadow: 1px 2px 5px rgba(0,0,0,0.9);
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 5mm 10mm;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3.5mm;
+        }
+        .menu-item {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 2.5mm;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+            border: 2px solid #ffe0b2;
+        }
+        .menu-item img {
+            width: 26mm;
+            height: 26mm;
+            border-radius: 6px;
+            object-fit: cover;
+            margin-right: 3.5mm;
+            flex-shrink: 0;
+        }
+        .menu-info { flex-grow: 1; min-width: 0; }
+        .menu-info h3 {
+            margin: 0 0 1.5mm 0;
+            font-size: 16pt;
+            color: #222;
+            font-weight: 900;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .menu-price {
+            font-size: 18pt;
+            font-weight: 900;
+            color: #e65100;
+            margin-left: 2mm;
+        }
+        .menu-desc {
+            font-size: 10.5pt;
+            color: #666;
+            line-height: 1.4;
+        }
+        .other-items {
+            margin-top: 5mm;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4mm;
+        }
+        .other-list {
+            background: white;
+            padding: 3mm 5mm;
+            border-radius: 10px;
+            border: 2px solid #eee;
+        }
+        .other-list h4 {
+            color: #e65100;
+            margin: 0 0 2mm 0;
+            font-size: 14pt;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 1.5mm;
+        }
+        .other-list p {
+            margin: 2mm 0;
+            font-size: 12.5pt;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px dashed #f0f0f0;
+            padding-bottom: 2mm;
+        }
+        .other-list p:last-child { border-bottom: none; padding-bottom: 0; }
+        .other-price { color: #e65100; font-size: 13pt; font-weight: 900; }
+        .footer {
+            background: #222;
+            color: white;
+            padding: 4mm 12mm;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 4px solid #e65100;
+            flex-shrink: 0;
+        }
+        .footer-info h2 {
+            margin: 0 0 1.5mm 0;
+            font-size: 19pt;
+            color: #ff9800;
+            letter-spacing: 2px;
+        }
+        .footer-info p { margin: 1.5mm 0; font-size: 12pt; }
+        .qr-section {
+            text-align: center;
+            background: white;
+            padding: 2mm;
+            border-radius: 8px;
+            color: #222;
+            border: 2px solid #ff9800;
+        }
+        .qr-section img { width: 24mm; height: 24mm; display: block; }
+        .qr-section p {
+            margin: 1mm 0 0 0;
+            font-size: 9pt;
+            font-weight: 900;
+            color: #e65100;
+        }
+    </style>
+</head>
+<body>
+    <div class="print-hint">
+        💡 提示：點擊右方按鈕即可列印出完美比例的 A4 傳單 👉
+        <button class="print-btn" onclick="window.print()">🖨️ 列印此傳單</button>
+    </div>
+
+    <div class="a4-container">
+        <!-- Header -->
+        <div class="header">
+            <img src="./images/hero.png" alt="Hero Background">
+            <div class="header-content">
+                <h1>喜財快餐</h1>
+                <p>美味平價 ‧ 廠區熱賣中 ‧ 歡迎外帶或來電預訂</p>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="./images/雞腿便當.jpg" alt="雞腿便當">
+                    <div class="menu-info">
+                        <h3>雞腿便當 <span class="menu-price">$105</span></h3>
+                        <div class="menu-desc">外酥內嫩的大雞腿</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="./images/排骨便當.jpg" alt="排骨便當">
+                    <div class="menu-info">
+                        <h3>排骨便當 <span class="menu-price">$95</span></h3>
+                        <div class="menu-desc">酥脆多汁的炸排骨</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="./images/雙主菜便當_.png" alt="雙主菜便當">
+                    <div class="menu-info">
+                        <h3>雙主菜 選二 <span class="menu-price">$120</span></h3>
+                        <div class="menu-desc">蝦捲／鮮魚／控肉 任選兩樣</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="./images/控肉便當.jpg" alt="控肉便當">
+                    <div class="menu-info">
+                        <h3>控肉便當 <span class="menu-price">$90</span></h3>
+                        <div class="menu-desc">肥瘦相間的經典控肉</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="./images/蝦捲便當.jpg" alt="蝦捲便當">
+                    <div class="menu-info">
+                        <h3>蝦捲便當 <span class="menu-price">$90</span></h3>
+                        <div class="menu-desc">金黃酥脆的手工蝦捲</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="./images/鮮魚便當.jpg" alt="鮮魚便當">
+                    <div class="menu-info">
+                        <h3>鮮魚便當 <span class="menu-price">$90</span></h3>
+                        <div class="menu-desc">每日新鮮海鮮</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="./images/滷肉便當_.png" alt="滷肉便當">
+                    <div class="menu-info">
+                        <h3>滷肉便當 <span class="menu-price">$70</span></h3>
+                        <div class="menu-desc">香氣四溢的古早味</div>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="./images/菜飯便當_.png" alt="菜飯便當">
+                    <div class="menu-info">
+                        <h3>菜飯便當 <span class="menu-price">$60</span></h3>
+                        <div class="menu-desc">清爽健康的多樣配菜</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="other-items">
+                <div class="other-list">
+                    <h4>平價熱銷</h4>
+                    <p>炒麵 (大／小) <span class="other-price">$50 / $35</span></p>
+                    <p>滷肉飯 (大／小) <span class="other-price">$50 / $35</span></p>
+                    <p>單點大雞腿 <span class="other-price">$65</span></p>
+                </div>
+                <div class="other-list">
+                    <h4>熱湯 & 小菜</h4>
+                    <p>貢丸湯 / 魚丸湯 / 豬血湯 <span class="other-price">$35</span></p>
+                    <p>味增湯 <span class="other-price">$25</span></p>
+                    <p>荷包蛋 / 滷蛋 $15　油豆腐 <span class="other-price">$5</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-info">
+                <h2>喜財快餐</h2>
+                <p>📍 樹林柑園街1段60號-1</p>
+                <p>📞 訂購專線: 35018669</p>
+            </div>
+            <div class="qr-section">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://bento-shop.vercel.app" alt="QR Code">
+                <p>掃碼看網路版菜單</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
