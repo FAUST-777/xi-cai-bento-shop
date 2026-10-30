@@ -13,7 +13,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
     { id: 3, img: '/images/控肉便當.jpg', price: 90, hasImg: true },
     { id: 4, img: '/images/蝦捲便當.jpg', price: 90, hasImg: true },
     { id: 5, img: '/images/鮮魚便當.jpg', price: 90, hasImg: true },
-    { id: 6, img: '/images/雞腿便當.jpg', price: 105, hasImg: true },
+    { id: 6, img: '/images/雞腿便當.jpg', price: 115, hasImg: true },
     { id: 7, img: '/images/滷肉便當_.png', price: 70, hasImg: true },
     { id: 8, img: '/images/菜飯便當_.png', price: 60, hasImg: true },
     { id: 9, img: '/images/炒麵_.png', price: '35 / 50', hasImg: true },

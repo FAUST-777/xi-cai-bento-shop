@@ -247,3 +247,15 @@ dataLayer       ✅ 初始化完成
 - 線上列印：`https://bento-shop.vercel.app/flyer-sea.html`、`https://bento-shop.vercel.app/flyer-zh.html`（開頁後按「列印此傳單」）
 - PDF 下載：`https://bento-shop.vercel.app/flyer-sea.pdf`、`https://bento-shop.vercel.app/flyer-zh.pdf`
 
+
+---
+
+### 階段八：雞腿便當調價 $105 → $115（2026-10-30）
+
+**使用者需求**：DM 左上角雞腿便當價格改為 115 元，並輸出中文版＋外文版列印用 PDF。
+
+| 檔案 | 變更 |
+|---|---|
+| `src/app/[locale]/page.tsx` | 雞腿便當 `price: 105` → `115`（網站菜單） |
+| `public/flyer-zh.html`、`public/flyer-sea.html` | 雞腿便當 `$105` → `$115` |
+| `public/flyer-zh.pdf`、`public/flyer-sea.pdf` | headless Edge `--print-to-pdf` 重新輸出，驗證兩版皆單頁 A4、價格正確 |
